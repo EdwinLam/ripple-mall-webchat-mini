@@ -1,0 +1,22 @@
+<import src="../../common/nav.wxml"/>
+<import src="../../common/prompt.wxml"/>
+
+<template is="nav" data="{{ navList, activeIndex }}"/>
+<template is="prompt" data="{{ prompt }}"/>
+
+<view class="scroll-list">
+    <view class="weui-form-preview" wx:if="{{ !!orderItems.length }}" wx:for="{{ orderItems }}" wx:key="" bindtap="navigateTo" data-id="{{ item.id }}">
+        <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">订单总价</view>
+                <view class="weui-form-preview__value_in-hd">¥ {{ item.payAmount }}</view>
+            </view>
+        </view>
+        <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item" wx:for="{{ item.goodSales }}" wx:for-item="goodSaleItem" wx:key="">
+                <view class="weui-form-preview__label">{{ goodSaleItem.good.goodName }}</view>
+                <view class="weui-form-preview__value">{{ goodSaleItem.price }} x ¥ {{ goodSaleItem.orderGoodSales.num }}</view>
+            </view>
+        </view>
+    </view>
+</view>

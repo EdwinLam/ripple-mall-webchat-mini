@@ -1,0 +1,36 @@
+<import src="../common/list.wxml" />
+<view class="classify">
+  <view class="nav_left" bindscrolltolower="getMore" bindscrolltoupper="onRefresh">
+    <scroll-view scroll-y="true" style="height: {{ deviceHeight + 'px' }}">
+      <view bindtap="changeTab" data-index="{{ index }}" class="nav_left_item {{ item.id === classify.id ? 'active' : '' }}" wx:for="{{ classifyItems}}" wx:key="">
+        {{ item.classifyName }}
+      </view>
+    </scroll-view>
+  </view>
+  <view class="nav_right">
+    <view class="title">
+      {{ classify.items[activeIndex].name }}
+    </view>
+    <view class="content">
+      <scroll-view scroll-y="true" style="height: {{ (deviceHeight - 49) + 'px' }}" bindscrolltolower="getMoreGoods" bindscrolltoupper="onRefreshGoods">
+       <view class="scroll-list">
+       		<view class="weui-panel weui-panel_access" wx:if="{{ !!goodItems.length }}">
+                   <view class="weui-panel__bd">
+                       <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ goodItems }}" wx:key="" bindtap="navigateTo" data-id="{{ item.id }}">
+                           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                               <image class="weui-media-box__thumb" src="{{ item.thumbUrl }}" />
+                           </view>
+                           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                               <view class="weui-media-box__title">{{ item.goodName }}</view>
+                               <view class="weui-media-box__desc">
+                                   <text class="text-orangered">¥ {{ item.price }}</text>
+                               </view>
+                           </view>
+                       </view>
+                   </view>
+               </view>
+       	</view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

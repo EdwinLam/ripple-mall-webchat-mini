@@ -1,0 +1,8 @@
+<!--搜索框部分-->
+<include src="./content/search.wxml"/>
+<!--幻灯片部分-->
+<include src="./content/slider.wxml"/>
+<!--九宫格部分-->
+<include src="./content/classifyGroup.wxml"/>
+<!--首页物品展示部分-->
+<include src="./content/list.wxml"/>
